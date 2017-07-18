@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dashboard"
+            type="com.shcherbinin.sasha.accountingfinance.domain.dashboard.DashboardModel" />
+    </data>
+
+    <com.kennyc.view.MultiStateView
+        android:id="@+id/multiStateView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:msv_emptyView="@layout/view_empty_dashboard">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@{dashboard.accountName}"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="@color/accent"
+                tools:text="Account name" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/DASHBOARD_HINT_BALANCE"
+                android:textAppearance="?android:textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@{dashboard.balance}"
+                android:textAppearance="?android:textAppearanceMedium"
+                tools:text="15555" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/DASHBOARD_HINT_INCOME"
+                android:textAppearance="?android:textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@{dashboard.income}"
+                android:textAppearance="?android:textAppearanceMedium"
+                tools:text="15555" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/DASHBOARD_HINT_EXPENSES"
+                android:textAppearance="?android:textAppearanceLarge" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@{dashboard.expenses}"
+                android:textAppearance="?android:textAppearanceMedium"
+                tools:text="15555" />
+
+        </LinearLayout>
+
+    </com.kennyc.view.MultiStateView>
+</layout>

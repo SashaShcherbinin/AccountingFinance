@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="transaction"
+            type="com.shcherbinin.sasha.accountingfinance.domain.transaction.TransactionModel" />
+
+        <variable
+            name="event"
+            type="com.shcherbinin.sasha.accountingfinance.presenter.main.transactions.TransactionsContract.EventListener" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{transaction.title}"
+            android:textAppearance="?android:textAppearanceMedium"
+            app:layout_constraintHorizontal_bias="0.073"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="TextView TextView TextView " />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@{transaction.amount > 0 ? @color/green : @color/red}"
+            android:text="@{String.valueOf(transaction.amount)}"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/textView"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="2343" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="7dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/textView2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:pattern='@{"EEE, d MMM yyyy HH:mm:ss"}'
+            app:time="@{transaction.date}"
+            tools:text="Wed, 4 Jul 2001 12:08:56" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

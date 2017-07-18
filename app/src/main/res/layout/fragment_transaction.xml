@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.shcherbinin.sasha.accountingfinance.presenter.main.transaction.TransactionViewModel" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/titleEt"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:text="@={viewModel.title}"
+            android:hint="@string/TRANSACTION_HINT_TITLE"
+            android:inputType="textPersonName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/amountEt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:text="@={viewModel.amount}"
+            android:hint="@string/TRANSACTION_HINT_AMOUNT"
+            android:inputType="numberDecimal|numberSigned"
+            app:layout_constraintLeft_toLeftOf="@+id/titleEt"
+            app:layout_constraintRight_toRightOf="@+id/titleEt"
+            app:layout_constraintTop_toBottomOf="@+id/titleEt" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="7dp"
+            android:enabled="@{viewModel.enable}"
+            android:onClick="@{() -> viewModel.onAddClicked()}"
+            android:text="@string/GENERAL_BUTTON_ADD"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/amountEt"
+            app:layout_constraintTop_toBottomOf="@+id/amountEt" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

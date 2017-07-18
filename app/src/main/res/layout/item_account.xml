@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="active"
+            type="Boolean" />
+
+        <variable
+            name="account"
+            type="com.shcherbinin.sasha.accountingfinance.domain.account.AccountModel" />
+
+        <variable
+            name="event"
+            type="com.shcherbinin.sasha.accountingfinance.presenter.main.accounts.AccountsContract.EventListener" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
+        android:background="?selectableItemBackground"
+        android:onClick="@{() -> event.onSelected(account)}"
+        app:cardUseCompatPadding="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:checked="@{active}"
+                android:clickable="false"
+                android:text="@{account.name}"
+                android:textAppearance="?android:textAppearanceMedium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.073"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/imageButton"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="TextView TextView TextView " />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:background="?selectableItemBackground"
+                android:onClick="@{() -> event.onEditClicked(account)}"
+                android:padding="10dp"
+                android:src="@drawable/ic_edit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/imageButton2"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:background="?selectableItemBackground"
+                android:onClick="@{() -> event.onDeleteClicked(account)}"
+                android:padding="10dp"
+                android:src="@drawable/ic_delete"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>
